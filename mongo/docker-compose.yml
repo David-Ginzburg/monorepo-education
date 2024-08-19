@@ -1,0 +1,13 @@
+services:
+  micro-services-db:
+    image: mongo:latest
+    container_name: micro-services-db
+    restart: always
+    ports:
+      - 27018:27017
+    volumes:
+      - ./mongo-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    command: --wiredTigerCacheSizeGB 1.5
