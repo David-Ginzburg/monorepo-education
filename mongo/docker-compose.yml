@@ -1,6 +1,6 @@
 services:
   micro-services-db:
-    image: mongo:latest
+    image: mongo:7.0.14
     container_name: micro-services-db
     restart: always
     ports:
