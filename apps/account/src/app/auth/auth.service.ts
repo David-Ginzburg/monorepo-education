@@ -4,6 +4,7 @@ import { UserEntity } from '../user/entities/user.entity';
 import { UserRole } from '@purple/interfaces';
 import { JwtService } from '@nestjs/jwt';
 import { AccountRegister } from '@purple/contracts';
+import { Types } from 'mongoose';
 
 @Injectable()
 export class AuthService {
@@ -46,7 +47,7 @@ export class AuthService {
     return { id: user._id };
   }
 
-  async login(id: string) {
+  async login(id: Types.ObjectId) {
     return {
       access_token: await this.jwtService.signAsync({ id }),
     };

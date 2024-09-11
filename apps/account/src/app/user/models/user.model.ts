@@ -1,14 +1,11 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { IUser, UserRole } from '@purple/interfaces';
-import { Document, HydratedDocument } from 'mongoose';
+import { UserRole } from '@purple/interfaces';
+import { HydratedDocument } from 'mongoose';
 
 export type UserDocument = HydratedDocument<UserModel>;
 
 @Schema({ _id: true })
-export class UserModel extends Document implements IUser {
-  @Prop()
-  _id?: string;
-
+export class UserModel {
   @Prop()
   displayName?: string;
 

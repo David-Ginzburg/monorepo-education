@@ -1,8 +1,9 @@
 import { IUser, UserRole } from '@purple/interfaces';
 import { compare, genSalt, hash } from 'bcryptjs';
+import { Types } from 'mongoose';
 
 export class UserEntity implements IUser {
-  _id?: string;
+  _id?: Types.ObjectId;
   displayName?: string;
   email: string;
   passwordHash: string;
