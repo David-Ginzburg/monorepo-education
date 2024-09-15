@@ -5,10 +5,10 @@ export namespace AccountRegister {
 
   export class Request {
     @IsEmail()
-    email: string | undefined;
+    email?: string;
 
     @IsString()
-    password: string | undefined;
+    password?: string;
 
     @IsOptional()
     @IsString()
@@ -16,6 +16,6 @@ export namespace AccountRegister {
   }
 
   export class Response {
-    email: string | undefined;
+    email?: string;
   }
 }

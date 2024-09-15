@@ -1,9 +1,19 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { UserRole } from '@purple/interfaces';
-import { HydratedDocument } from 'mongoose';
+import { PurchaseState, UserRole } from '@purple/interfaces';
+import { HydratedDocument, Types } from 'mongoose';
 
 export type UserDocument = HydratedDocument<UserModel>;
 
+@Schema({ _id: true })
+export class UserCourses {
+  @Prop({ required: true })
+  courseId: string;
+
+  @Prop({ required: true, enum: PurchaseState, type: String })
+  purchaseState: PurchaseState;
+}
+
+export const UserCoursesSchema = SchemaFactory.createForClass(UserCourses);
 @Schema({ _id: true })
 export class UserModel {
   @Prop()
@@ -22,6 +32,9 @@ export class UserModel {
     default: UserRole.Student,
   })
   role: UserRole;
+
+  @Prop({ type: [UserCoursesSchema], _id: false })
+  courses: Types.Array<UserCourses>;
 }
 
 export const UserSchema = SchemaFactory.createForClass(UserModel);

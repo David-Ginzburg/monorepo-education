@@ -5,13 +5,13 @@ export namespace AccountLogin {
 
   export class Request {
     @IsEmail()
-    email: string | undefined;
+    email?: string;
 
     @IsString()
-    password: string | undefined;
+    password?: string;
   }
 
   export class Response {
-    access_token: string | undefined;
+    access_token?: string;
   }
 }
